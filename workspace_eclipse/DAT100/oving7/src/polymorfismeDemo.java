@@ -1,0 +1,101 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class polymorfismeDemo {
+
+
+	public polymorfismeDemo() {
+
+	}
+
+
+	public static void main(String[] args) {
+		Scanner inn= new Scanner(System.in);
+		ArrayList<Spiller> spillerListe=new ArrayList<Spiller>();
+		ArrayList<AbstraktRute> spillbrett=new ArrayList<AbstraktRute>();
+
+		spillbrett= lagSpillbrett();
+		spillerListe = opprettSpillere();
+		Boolean run= true;
+		while(run){
+			run=enRunde(spillerListe, spillbrett);
+		}
+
+	}
+
+	public static ArrayList<AbstraktRute> lagSpillbrett() {
+		ArrayList<AbstraktRute> spillbrett=new ArrayList<AbstraktRute>();
+
+		for(int i =0; i<=15; i++){
+			spillbrett.add(new VanligRute(i));
+		}
+		for(int i =1; i<5; i++){
+			spillbrett.add(new TilbakeTilStart(i));
+		}
+		Collections.shuffle(spillbrett);
+
+
+		return spillbrett;
+	}
+
+	private static  ArrayList<Spiller> opprettSpillere() {
+		Scanner inn= new Scanner(System.in);
+
+		System.out.println("Hvor mange spillere?");
+		int antSpillere= inn.nextInt();
+
+		ArrayList<Spiller> spillerListe= new ArrayList<Spiller>();
+
+		for(int i =1; i<=antSpillere; i++){
+			System.out.println("Navn: ");
+			String navn=inn.next();
+			Spiller spiller= new Spiller(navn,0);
+			spillerListe.add(spiller);
+		}
+		return spillerListe;
+
+	}
+
+	public static  Boolean omgang(Spiller spilleren, ArrayList<AbstraktRute> spillbrett){
+		Terning etKast= new Terning();
+		int posisjon=spilleren.getPoengsum() + etKast.getTall();
+		spilleren.setPoengsum(posisjon);
+
+		if (posisjon>= 20){
+			vinner(spilleren);
+			return false;
+		}
+		else{
+			spillbrett.get(posisjon).flyttHit(spilleren);
+			return true;
+		}
+
+
+	}
+
+	private static void vinner(Spiller spilleren) {
+		System.out.println(spilleren.getNavn()+" vant med en poengsum på "+ spilleren.getPoengsum()+"!");
+	}
+
+	public static Boolean enRunde(ArrayList<Spiller> spillerListe, ArrayList<AbstraktRute> spillbrett){
+		Boolean run=true;
+		for(Spiller spilleren:spillerListe){
+			run = omgang(spilleren,spillbrett);
+
+			//pauser programmet i 2 sekund mellom hver runde
+			try {
+				Thread.sleep(1500);
+			} catch (InterruptedException e) {}
+
+
+			if( run==false){
+				break;
+			}
+		}
+
+		return run;
+	}
+}
+
+

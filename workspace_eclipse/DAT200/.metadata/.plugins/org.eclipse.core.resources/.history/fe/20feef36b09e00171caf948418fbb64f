@@ -1,0 +1,33 @@
+package oppgave1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class oppgave2 {
+
+	public static List<Integer> A;
+	public static List<Integer> B;
+	public static List<Integer> C;
+	public static Integer en;
+	public static Integer to;
+	public static Integer tre; 
+
+	public static void main(String[] args){
+		A=new ArrayList<Integer>();
+		B=new ArrayList<Integer>();
+		C=new ArrayList<Integer>();
+		
+		en= 1;
+		to= 2;
+		tre= 3;
+		
+	}
+	
+	public void HannoisTaarn(){
+		A.add(tre);
+		A.add(to);
+		A.add(en)
+		
+	}
+
+}

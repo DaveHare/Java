@@ -1,0 +1,49 @@
+package application;
+
+import java.util.ArrayList;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class AapneHendelseLytter implements EventHandler<MouseEvent> {
+	private ListView<Hendelse> listView;
+	private ArrayList<Person> inviterte;
+
+	
+	public AapneHendelseLytter(ListView<Hendelse> listView) {
+		this.listView= listView;
+		
+	}
+
+	@Override
+	public void handle(MouseEvent event) {
+		StackPane layout=new StackPane();
+		Stage stage = new Stage();
+		
+		int idx= listView.getSelectionModel().getSelectedIndex();
+		Hendelse hendelsen= listView.getItems().get(idx);
+		System.out.println(hendelsen.toString());
+		
+		inviterte=hendelsen.getInviterte();
+		
+		ListView<Person> listView2 = new ListView<>();
+		ObservableList<Person> gjesteListe = FXCollections.observableList(inviterte);
+		listView2.setItems(gjesteListe);
+		layout.getChildren().add(listView2);
+
+		stage.setTitle("Gjesteliste");
+		stage.setScene(new Scene(layout));
+		stage.sizeToScene();
+		stage.show();
+
+
+
+	}
+
+}

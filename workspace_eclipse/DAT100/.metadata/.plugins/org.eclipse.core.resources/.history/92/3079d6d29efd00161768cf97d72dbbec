@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+
+public class VitenskapligAnsatt extends Ansatt {
+	private String fagfelt;
+	private String emner;
+	private ArrayList<Emne> underviserI;
+
+
+	public VitenskapligAnsatt(String fornavn, String etternavn, int fodeaar) {
+		super(fornavn, etternavn, fodeaar);
+		fagfelt=null;
+		underviserI= null;
+
+	}
+
+
+
+	public String getFagfelt() {
+		return fagfelt;
+	}
+
+	public void setFagfelt(String fagfelt) {
+		this.fagfelt = fagfelt;
+	}
+
+	public ArrayList<Emne> getUnderviserI() {
+		return underviserI;
+	}
+
+	public void setUnderviserI(ArrayList<Emne> underviserI) {
+		this.underviserI = underviserI;
+	}
+	public void leggTilEmne(String ... emner){
+		for(Emner emne : emner){
+			underviserI.add(emne);
+		}
+
+	}
+	public ArrayList<Emne> liste() {
+		return underviserI;
+	}
+	
+	public String toString(){
+		String resultat=super.toString()+"Jobber med fagfeltet "+fagfelt+" og underviser i "+liste()+".";
+
+		return resultat;
+
+	}
+
+}

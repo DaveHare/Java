@@ -1,0 +1,105 @@
+package oving5;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+
+public class Spillet {
+	
+	public static ArrayList spillere;
+	Scanner inn= new Scanner(System.in);
+	
+	public Spillet() {
+		spillere =new ArrayList();
+	}
+	public static Spiller lesInnSpiller(Scanner inn){
+
+		System.out.println("Navn: ");
+		String navn=inn.nextLine();
+		int poengsum=0;
+		for(int i=1;i<=3;i++){
+			Terning nyttKast= new Terning();
+			poengsum+= nyttKast.getTall();
+		}
+
+		Spiller spilleren= new Spiller(navn, poengsum);
+		spillere.add(spilleren);
+		//leggTilSpiller(spilleren);
+
+		return spilleren;
+	}
+
+	
+	public static void leggTilSpiller(Spiller enSpiller){
+		spillere.add(enSpiller);
+	}
+
+	public static void omgang(Spiller spilleren){
+		Scanner inn= new Scanner(System.in);
+
+		int poengsum=spilleren.getPoengsum();
+		System.out.println("Det er " + spilleren.getNavn() + " sin tur: ");
+		System.out.println("Poengsum: " + poengsum);
+		System.out.println("Vil du kaste engang til? (j/n) :");
+		String svar= inn.next();
+
+		if ((svar== "j") ||(svar== "ja")){
+			Terning nyttKast= new Terning();
+			poengsum+= nyttKast.getTall();
+			spilleren.setPoengsum(poengsum);
+			if (poengsum>=22){
+				System.out.println(spilleren.getNavn() + " har mer en 21 poeng og har derfor tapt.");
+				spillere.remove(spilleren);
+			}
+		}
+
+
+	}
+
+	//	public void harManTapt(Spiller spilleren){
+	//		int poengsum= spilleren.getPoengsum();
+	//		if (poengsum>=22){
+	//			System.out.println(spilleren.getNavn() + " har mer en 21 poeng og har derfor tapt.");
+	//			spillere.remove(spilleren);
+	//		}
+	//		
+	//	}
+	
+	
+	public static ArrayList<Spiller> enRunde(){
+		while(spillere.size()>1){
+			for(int i=1; i<=spillere.size(); i++){
+				omgang(spillere.get(i));
+				
+				//FOTSETT HER
+			}
+		}
+		return spillere;
+		
+		
+		
+		
+	}
+	
+	
+	public static void main(String[] args){
+		Scanner inn= new Scanner(System.in);
+		System.out.println("hvor mange spillere skal være med? :");
+		int antallSpillere= inn.nextInt();
+		
+		for(int i=1;i<=antallSpillere;i++){
+			lesInnSpiller(inn);
+		}
+		enRunde();
+				
+		
+		
+		
+	}
+
+
+
+
+
+}

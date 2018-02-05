@@ -1,0 +1,24 @@
+package oppgave1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class oppgave2 {
+
+	public static List<Integer> A;
+	public static List<Integer> B;
+	public static List<Integer> C;
+
+
+	public static void main(String[] args){
+		A=new ArrayList<Integer>();
+		B=new ArrayList<Integer>();
+		C=new ArrayList<Integer>();
+		
+		Integer en=  new Integer(1);
+		Integer to=  new Integer(2);
+		Integer tre=  new Integer(3);
+
+	}
+
+}

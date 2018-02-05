@@ -1,0 +1,80 @@
+package kapteinOks;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+import grafalgoritmer.NoderNaboliste;
+
+
+
+public class kaptainOks {
+	public static int[][] kart;
+	public static List<NoderNaboliste> lesKartFraFil() {
+		List<NoderNaboliste> liste = new ArrayList<>();
+
+		try {
+			Scanner filleser = new Scanner(new File("kart.txt"));
+			String linje;
+			kaptainOks leser = new kaptainOks();
+			int i = filleser.nextInt();
+			int j = filleser.nextInt();
+			kart= new int[i][j];
+			int kx= filleser.nextInt();
+			int ky= filleser.nextInt();
+			//			liste.add(new NoderNaboliste());
+			int mx= filleser.nextInt();
+			int my= filleser.nextInt();
+			System.out.println("_"+ my);
+			//			liste.add(new NoderNaboliste());
+
+			//			while (filleser.hasNextLine()) {
+
+
+			
+			//				String[] komp1 = linje.split("\t");
+			for(int jj=0; jj<j; jj++){
+				filleser.nextLine();
+				linje = filleser.nextLine();
+//				System.out.println(linje);
+				String[] komp2 = linje.split(",");
+
+				for(int ii=0; ii<i; ii++){
+					System.out.print(" "+komp2[jj]);
+					kart[jj][ii]= Integer.parseInt(komp2[ii]);	
+				}
+				System.out.print("\n");
+
+
+
+				//				NoderNaboliste studenten = leser.lesNode(linje);
+				//				liste.add(studenten);
+				//				i++;
+			}
+
+			return liste;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	//	private NoderNaboliste lesNode(String linje) {
+	//		String[] komponenter = innStreng.split("\t");
+	//		Emne emnet = new Emne(komponenter[0], komponenter[1], komponenter[2].charAt(0));
+	//		emnet.setStudiepoeng(Integer.parseInt(komponenter[3]));
+	//		return emnet;
+	//	}
+
+	public static void main(String[] args){
+		lesKartFraFil();
+
+	}
+
+}

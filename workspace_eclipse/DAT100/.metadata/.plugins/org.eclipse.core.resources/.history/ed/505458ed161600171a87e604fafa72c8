@@ -1,0 +1,112 @@
+package application;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+import application.Hendelse;
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
+
+
+
+public class Main extends Application {
+
+	public ArrayList<Hendelse> hendelser;
+
+	@Override
+	public void start(Stage primaryStage) {
+		try {
+			GridPane root = new GridPane();
+			Scene scene = new Scene(root);
+
+			primaryStage.setTitle("Hendelser");
+			
+			//for at listview og knappene ikke skal ligge oppå hverandre
+			 new RowConstraints();
+			 new RowConstraints();
+			
+
+			//Sette opp liste
+			opprettHendelser();
+			leggTilFolkIHendelser();
+			
+
+			ListView<Hendelse> listView = new ListView<>();
+			ObservableList<Hendelse> hendelseListe = FXCollections.observableList(hendelser);
+			listView.setItems(hendelseListe);
+			root.add(listView,0,0);
+			
+			AapneHendelseLytter aapneHendelse= new AapneHendelseLytter(listView);//lytter
+			listView.setOnMouseClicked(aapneHendelse);
+
+			HBox hbox = new HBox();
+			hbox.setAlignment(Pos.BOTTOM_LEFT);
+			Button nyHendelse = new Button("Ny Hendelse");
+			Button nyPerson = new Button("Ny person");
+			Button inviter = new Button("Inviter person");
+			HBox.setHgrow(nyHendelse, Priority.ALWAYS);
+			HBox.setHgrow(nyPerson, Priority.ALWAYS);
+			HBox.setHgrow(inviter, Priority.ALWAYS);
+			nyHendelse.setMaxWidth(Double.MAX_VALUE);
+			nyPerson.setMaxWidth(Double.MAX_VALUE);
+			inviter.setMaxWidth(Double.MAX_VALUE);
+			hbox.getChildren().addAll(nyHendelse, nyPerson, inviter);
+			root.add(hbox,0,1);
+
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+			
+
+
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Hendelse hendelse0=new Hendelse("Partey hos kell", LocalDate.now(),LocalDate.now());
+	public Hendelse hendelse1=new Hendelse("Lan", LocalDate.now(),LocalDate.now());
+	public Hendelse hendelse2=new Hendelse("Familiemiddag", LocalDate.now(),LocalDate.now());
+	public Hendelse hendelse3=new Hendelse("Hyttetur", LocalDate.now(),LocalDate.now());
+	public Hendelse hendelse4=new Hendelse("Theas bursdag", LocalDate.now(),LocalDate.now());
+
+	public void opprettHendelser() {
+		hendelser= new ArrayList<Hendelse>();
+		hendelser.add(hendelse0);
+		hendelser.add(hendelse1);
+		hendelser.add(hendelse2);
+		hendelser.add(hendelse3);
+		hendelser.add(hendelse4);
+	}
+
+	public Person siri= new Person("Siri Mykland", 1996);
+	public Person rosita= new Person("Rosita", 1990);
+	public Person mats= new Person("Mats", 1995);
+	public Person fedda= new Person("Fedda", 1994);
+	public Person kjell= new Person("Kjell", 1800);
+
+
+	public void leggTilFolkIHendelser(){
+		hendelse0.leggTilPerson(siri, rosita, mats);
+		hendelse1.leggTilPerson(mats, fedda, siri);
+		hendelse2.leggTilPerson(fedda, kjell, rosita);
+		hendelse3.leggTilPerson(mats, fedda, rosita, kjell);
+		hendelse4.leggTilPerson(kjell, siri);
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}
+

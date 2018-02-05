@@ -1,0 +1,11 @@
+
+
+
+public class Ansatt {
+
+	public Ansatt extends Person() {
+return null;
+	}
+
+	
+}

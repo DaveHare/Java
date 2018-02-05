@@ -1,0 +1,8 @@
+
+public class AbstraktRute implements Rute{
+
+	public AbstraktRute() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

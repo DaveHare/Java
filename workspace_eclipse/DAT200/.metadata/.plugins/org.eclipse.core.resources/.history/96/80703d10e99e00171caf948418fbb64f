@@ -1,0 +1,84 @@
+package oppgave1;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
+public class oppgave2 {
+
+	public static Stack<Integer> A;
+	public static Stack<Integer> B;
+	public static Stack<Integer> C;
+	public static Integer en;
+	public static Integer to;
+	public static Integer tre; 
+
+	public static void main(String[] args){
+		A=new Stack<Integer>();
+		B=new Stack<Integer>();
+		C=new Stack<Integer>();
+
+		en= 1;
+		to= 2;
+		tre= 3;
+
+		A.push(tre);
+		A.push(to);
+		A.push(en);
+
+	}
+
+	public void HannoisTaarn(Stack X){
+
+		if(B.isEmpty()||A.peek()<B.peek()){
+			B.push(X.peek);
+			HannoisTaarn(X.pop());
+		}else if(C.isEmpty() || A.peek()>B.peek()){
+			C.push(X.peek());
+			HannoisTaarn(X.pop());
+
+		}else if((A.isEmpty())||(C.peek()<B.peek())){
+			C.push(brikke);
+
+
+		}else if(B.peek()>C.peek()){
+
+
+		}else{
+
+		}
+
+
+
+
+	}
+	public void HannoisTaarn(Stack X){
+		if(B.isEmpty()){
+			B.push(X.peek);
+			HannoisTaarn(X.pop());
+		}else if(C.isEmpty() || A.peek()>B.peek()){
+			C.push(X.peek());
+			HannoisTaarn(X.pop());
+
+		}else if((A.isEmpty())||(C.peek()<B.peek())){
+			C.push(brikke);
+
+
+		}else if(B.peek()>C.peek()){
+
+
+		}else{
+
+		}
+
+
+
+	}
+
+
+}
+
+
+
+
+}

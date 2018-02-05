@@ -1,0 +1,5 @@
+1508837050332	Delete element
+1508855614393	Rename field 'resultatMap2'
+1508855627007	Rename field 'resultatMap2'
+1508855823804	Rename method 'getData'
+1508855876651	Extract method 'getKarakterer'

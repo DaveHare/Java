@@ -1,0 +1,85 @@
+package kapteinOks;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+import grafalgoritmer.NoderNaboliste;
+
+
+
+public class kaptainOks {
+	public static int[][] kart;
+	public static List<NoderNaboliste> lesStudenterFraFil() {
+		List<NoderNaboliste> liste = new ArrayList<>();
+
+		try {
+			Scanner filleser = new Scanner(new File("kart.txt"));
+			String linje;
+			kaptainOks leser = new kaptainOks();
+			int i = filleser.nextInt();
+			int j = filleser.nextInt();
+			kart= new int[i][j];
+			int kx= filleser.nextInt();
+			int ky= filleser.nextInt();
+			//			liste.add(new NoderNaboliste());
+			int mx= filleser.nextInt();
+			int my= filleser.nextInt();
+			//			liste.add(new NoderNaboliste());
+
+			while (filleser.hasNextLine()) {
+				linje = filleser.nextLine();
+				String[] komp1 = linje.split("\t");
+
+				for(int jj=0; jj<j; jj++){
+					String[] komp2 = komp1[jj].split(",");
+					
+					for(int ii=0; ii<i; i++){
+						kart[jj][ii]= Integer.parseInt(komp2[ii]);
+					}
+				}
+
+
+				//				NoderNaboliste studenten = leser.lesNode(linje);
+				//				liste.add(studenten);
+				i++;
+			}
+
+			return liste;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	private NoderNaboliste lesNode(String linje) {
+		String[] komponenter = innStreng.split("\t");
+		Emne emnet = new Emne(komponenter[0], komponenter[1], komponenter[2].charAt(0));
+		emnet.setStudiepoeng(Integer.parseInt(komponenter[3]));
+		return emnet;
+	}
+
+	public static void lesInnKart(){
+		String[] komponenter = innStreng.split("\t");
+		try {
+			int id = Integer.parseInt(komponenter[0]);
+			int fodselsaar = Integer.parseInt(komponenter[3]);
+			int aarskurs = Integer.parseInt(komponenter[5]);
+			Student studenten = new Student(id, komponenter[2], komponenter[1], fodselsaar);
+			studenten.setStudieprogram(komponenter[4]);
+			studenten.setAarskurs(aarskurs);
+			return studenten;
+		} catch (NumberFormatException e) {
+			System.err.println("Strengen : " + innStreng + " er i feil format!");
+			return null;
+		}
+
+	}
+
+}

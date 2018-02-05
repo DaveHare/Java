@@ -1,0 +1,48 @@
+package oppgave1;
+
+import java.util.ArrayList;
+
+public class ArrayDequen<Integer> {
+
+	public int startstørrelse;
+	public int startbuffer;
+	public int index;
+	public Integer data;
+	public ArrayList<Integer> listen;
+	
+	
+	public ArrayDeque(int startstørrelse, int startbuffer){
+		this.startstørrelse=startstørrelse;
+		this.startbuffer= startbuffer;
+		
+//		this.index= index;
+//		this.data=data;
+		listen= new ArrayList<Integer>();	
+	}
+	
+	public void add(int index, Integer data){
+		
+		((ArrayList<Integer>) listen.get(index)).add(data);
+		
+		
+	}
+
+	public Integer get(int index){
+		
+		return null;		
+	}
+	
+	public void remove(int index){
+		
+	}
+	
+	public void addFirst(){
+		
+	}
+	
+	public void addLast(){
+		
+	}
+	
+	
+}

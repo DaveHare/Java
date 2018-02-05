@@ -1,0 +1,142 @@
+package grafrepresentasjoner;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/*
+ * Representerer en graf som en nabomatrise.
+ * 
+ * Plassbruk Theta(V^2)
+ */
+public class EnkelNaboMatrise <T> implements Graf<T> {
+	int[][] vekter;			// Matrise av vekter
+		
+	ArrayList<T> noder;		// Liste av noder med innhold
+	ArrayList<Integer> scores;	// Liste av scores for noder
+	ArrayList<Boolean> handled;
+	
+	// ArrayList<ArrayList<Integer>> vekter: Alternativet hvis man skal ha en graf som kan utvides ved behov
+
+	/*
+	 * Må ta inn størrelsen til konstruktøren for å få 
+	 * allokert arrayen
+	 */
+	public EnkelNaboMatrise(int antallNoder) {
+		// Allokerer arrayen
+		vekter = new int[antallNoder][antallNoder];
+		
+		// Setter startverdier for arrayen
+		for (int i=0;i<antallNoder;i++) {
+			for (int j=0;j<antallNoder;j++) {
+				if (i!=j) vekter[i][j] = INGEN_KANT;
+			}
+		}
+		
+		// Lager listene for noder og scores
+		noder = new ArrayList<>();
+		scores = new ArrayList<>();
+	}
+	
+	/*
+	 * Returnerer indeksen til noden
+	 * Kjøretid O(v)
+	 */
+	public int addNode(T element) {
+		noder.add(element);
+		scores.add(INGEN_SCORE);
+		handled.add(false);
+		return noder.size() - 1;
+	}
+	
+	// Kjøretid O(1)
+	public void addEdge(int fra, int til, int vekt) {
+		vekter[fra][til] = vekt;
+	}
+	
+	// Kjøretid O(1)
+	public int getWeight(int fra, int til) {
+		return vekter[fra][til];
+	}
+	
+	// Kjøretid O(v) pga. indexOf operasjonene
+	public int getWeight(T fra, T til) {
+		int fraindeks = noder.indexOf(fra);
+		int tilindeks = noder.indexOf(til);
+		return vekter[fraindeks][tilindeks];
+	}
+
+	/*
+	 * Kjøretid O(v)
+	 */
+	@Override
+	public List<Integer> getNeighbours(int nodeindeks) {
+		List<Integer> resultat = new ArrayList<>();
+		for (int i=0;i<vekter.length;i++) {
+			if (vekter[nodeindeks][i] != INGEN_KANT) {
+				resultat.add(i);
+			}
+		}
+		return resultat;
+	}
+
+	// Kjøretid O(1)
+	@Override
+	public T getNodeObject(int nodeindeks) {
+		return noder.get(nodeindeks);
+	}
+
+	// Kjøretid O(1)
+	@Override
+	public int getScore(int nodeindeks) {
+		return scores.get(nodeindeks);
+	}
+
+	// Kjøretid O(1)
+	@Override
+	public int setScore(int nodeindeks, int nyScore) {
+		return scores.set(nodeindeks, nyScore);
+	}
+	
+	@Override public String toString() {
+		StringBuilder resultat = new StringBuilder();
+		resultat.append("Graf med matriserepresentasjon: \n");
+		resultat.append("Noder: \n");
+		for (int node=0;node<noder.size();node++) {
+			resultat.append(noder.get(node) + " har score " + scores.get(node) + "\n");
+		}
+		resultat.append("     ");
+		for (int x=0;x<vekter.length;x++) {
+			resultat.append(String.format("%5d", x));
+		}
+		resultat.append("\n");
+		for (int fra=0;fra<vekter.length;fra++) {
+			resultat.append(String.format("%5d", fra));
+			for (int til=0;til<vekter.length;til++) {
+				resultat.append(String.format("%5d", vekter[fra][til]));
+			}
+			resultat.append("\n");
+		}
+		return resultat.toString();
+	}
+
+	// Kjøretid O(v)
+	@Override
+	public void resetScores() {
+		for (int i=0;i<scores.size();i++) {
+			scores.set(i, INGEN_SCORE);
+			handled.set(i, false);
+		}
+	}
+	
+	public boolean isHandled(int nodeindeks) {
+		return handled.get(nodeindeks);
+	}
+
+	public void setHandled(int nodeindeks, boolean handled) {
+		this.handled.set(nodeindeks, handled);
+	}
+
+	public int noNodes() {
+		return noder.size();
+	}
+}

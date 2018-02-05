@@ -1,0 +1,29 @@
+package application;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
+import javafx.event.EventHandler;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+
+public class LeggTilHendelse implements EventHandler<MouseEvent> {
+private TextField beskrivelse1;
+private TextField startdato1;
+private TextField sluttdato1;
+	public LeggTilHendelse(TextField beskrivelse1, TextField startdato1, TextField sluttdato1) {
+		this.beskrivelse1=beskrivelse1;
+		this.startdato1= startdato1;
+		this.sluttdato1= sluttdato1
+	}
+
+	@Override
+	public void handle(MouseEvent event) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
+		formatter = formatter.withLocale( Locale.GERMANY);
+		Main.leggTilHendelse( new Hendelse(beskrivelse1.getText(), LocalDate.parse(startdato1.getText(), formatter),LocalDate.parse(sluttdato1.getText(), formatter)));
+		
+	}
+
+}

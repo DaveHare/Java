@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+
+public class ArvingDemo {
+
+	
+	public ArrayList<Person> universitetsRegister;
+	
+	public static void main(String[] args) {
+	TekniskAnsatt ansatt1=new TekniskAnsatt("Siri", "Mykland", 1996);
+	ansatt1.setAnsattnummer(1111);
+	ansatt1.setAarslonn(10000000);
+	ansatt1.setStilling("noe viktig");
+	
+	
+	
+	
+	System.out.println(ansatt1+"\n");
+	//ansatt1.getAnsvarForRom();
+	
+	VitenskapligAnsatt ansatt2= new VitenskapligAnsatt("Simen","Daland",1990);
+	ansatt2.setAnsattnummer(1112);
+	ansatt2.setAarslonn(10000000);
+	ansatt2.setFagfelt("Mattematikk");
+	//ansatt2.setUnderviserI(ansatt2.leggTilEmne("MAT300", "MAT200", "MAT100");
+	ansatt2.setStilling("Mattematiker");
+	
+	
+	Student student1= new Student("Silje","Rugsveen",1996);
+	student1.setAarskurs(1);
+	student1.setStudieretning("Ingeniørfag - Data");
+	student1.setTarEmne("Dat100");
+	
+	
+	}
+
+}

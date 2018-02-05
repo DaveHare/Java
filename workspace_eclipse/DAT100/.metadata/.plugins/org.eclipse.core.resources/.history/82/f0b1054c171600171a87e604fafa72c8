@@ -1,0 +1,18 @@
+package application;
+
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
+
+public class nyHendelseLytter implements EventHandler<MouseEvent> {
+
+	public nyHendelseLytter(ListView listView) {
+		
+	}
+
+	@Override
+	public void handle(MouseEvent arg0) {
+		
+		
+	}
+
+}

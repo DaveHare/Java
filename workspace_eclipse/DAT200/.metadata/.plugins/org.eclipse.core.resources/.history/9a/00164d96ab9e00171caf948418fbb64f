@@ -1,0 +1,20 @@
+package oppgave1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class oppgave2 {
+
+	public List<Integer> A;
+	public List<Integer> B;
+	public List<Integer> C;
+
+
+	public static void main(String[] args){
+		A=new ArrayList<Integer>();
+		B=new ArrayList<Integer>();
+		C=new ArrayList<Integer>();
+
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 3 elements to &apos;oving2/src/oving2&apos;&#x0D;&#x0A;- Original project: &apos;oving2&apos;&#x0D;&#x0A;- Destination element: &apos;oving2/src/oving2&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     MinsteDeleligHeltall.java&#x0D;&#x0A;     PrimtallTest.java&#x0D;&#x0A;     SjekkHeltall.java&#x0D;&#x0A;- Update references to refactored element" description="Move compilation units" destination="/src&lt;oving2" element1="/src&lt;{MinsteDeleligHeltall.java" element2="/src&lt;{PrimtallTest.java" element3="/src&lt;{SjekkHeltall.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1484658105275" units="3" version="1.0"/>
+</session>

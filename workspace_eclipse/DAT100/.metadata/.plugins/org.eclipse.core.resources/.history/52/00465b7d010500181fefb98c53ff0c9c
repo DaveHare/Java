@@ -1,0 +1,16 @@
+package Hendelse;
+
+public class oppgA {
+	
+	public float[] multiplisereArray(float[] tab, int faktor) {
+		for(int i =0; i< tab.length; i++) {
+			tab[i]*=faktor;
+		}
+		return tab;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

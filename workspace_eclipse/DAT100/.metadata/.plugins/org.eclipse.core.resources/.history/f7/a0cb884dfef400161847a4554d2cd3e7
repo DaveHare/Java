@@ -1,0 +1,125 @@
+package oving5;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import oving3.Spiller;
+
+
+
+public class Spillet {
+
+	ArrayList<Spiller>  spillere;
+	ArrayList<Spiller>  ferdig;
+	Scanner inn= new Scanner(System.in);
+
+	public Spillet() {
+		spillere =new ArrayList<Spiller>();
+		ferdig =new ArrayList<Spiller>();
+	}
+	public Spiller lesInnSpiller(Scanner inn){
+		System.out.println("Navn: ");
+		String navn=inn.next();
+		int poengsum=0;
+		for(int i=1;i<=3;i++){
+			Terning nyttKast= new Terning();
+			poengsum+= nyttKast.getTall();
+		}
+
+		Spiller spilleren= new Spiller(navn, poengsum);
+		spillere.add(spilleren);
+
+
+		return spilleren;
+	}
+
+
+	public void leggTilSpiller(Spiller enSpiller){
+		spillere.add(enSpiller);
+	}
+
+	public void omgang(Spiller spilleren){
+		Scanner inn= new Scanner(System.in);
+
+		int poengsum=spilleren.getPoengsum();
+		System.out.println("Det er " + spilleren.getNavn() + " sin tur: ");
+		System.out.println("Poengsum: " + poengsum);
+		System.out.println("Vil du kaste engang til? (j/n) :");
+		String svar= inn.next();
+
+		if ((svar== "j") ||(svar== "ja")){
+			Terning nyttKast= new Terning();
+			poengsum=poengsum + nyttKast.getTall();
+			spilleren.setPoengsum(poengsum);
+		}
+
+		if ((svar== "n") ||(svar== "nei")){
+			ferdig.add(spilleren);
+			spillere.remove(spilleren);
+		}
+
+		harManTapt(spilleren);
+	}
+
+	public void harManTapt(Spiller spilleren){
+		int poengsum= spilleren.getPoengsum();
+		if (poengsum>=22){
+			System.out.println(spilleren.getNavn() + " har mer en 21 poeng og har derfor tapt.");
+			spillere.remove(spilleren);
+		}
+	}
+	public Spiller sjekkVinner(ArrayList<Spiller> ferdig){
+		if (ferdig.size()==1){
+			return ferdig.get(0);
+		}
+
+		
+		if (ferdig.size>=2){
+			for (int i; i>ferdig.size();i++)
+			Spiller minst= Spiller.MinstScore(ferdig.get(0), ferdig.get(1);
+			ferdig.remove(minst);
+			}
+		return vinner
+		}
+		else{
+
+		}
+	}
+
+
+	Spiller vinner= Spiller.HoyestScore(Spiller1, Spiller2);
+
+	public ArrayList<Spiller> enRunde(){
+		for (Spiller spiller: spillere) {
+			omgang(spiller);
+		}
+		return spillere;
+	}
+
+
+	public static void main(String[] args){
+
+		Spillet spillet = new Spillet();
+
+		Scanner inn= new Scanner(System.in);
+		System.out.println("hvor mange spillere skal være med? :");
+		int antallSpillere= inn.nextInt();
+
+		for(int i=1;i<=antallSpillere;i++){
+			spillet.lesInnSpiller(inn);
+		}
+
+		while(true){
+			spillet.enRunde();
+
+		}
+
+
+
+	}
+
+
+
+
+
+}

@@ -1,0 +1,12 @@
+
+public class Rute {
+
+	public Rute() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void flyttHit(Spiller spilleren){
+		spilleren.getPoengsum();
+	}
+
+}

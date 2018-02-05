@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class personHendelseTest {
+
+	public personHendelseTest() {
+		
+	}
+
+	public static void main(String[] args) {
+		/*
+		 * Lag en main metode som demonstrerer bruken av
+		 * hendelser og personer. Lag minst to hendelser
+		 * og minst tre personer som deltar på minst én 
+		 * hendelse hver, og skriv ut informasjon om dem.
+		 */
+		
+		
+		
+		
+		public static void lagPerson() {
+			Scanner input= new Scanner(System.in);
+				
+				System.out.println("ID: ");
+				int ID= input.nextInt();
+
+				System.out.println("Fornavn: ");
+				input.nextLine();
+				String fornavn= input.nextLine();
+				
+				System.out.println("Etternavn: ");
+				input.nextLine();
+				String etternavn= input.nextLine();
+
+				
+				System.out.println("Fødeår: ");
+				int fodeaar=input.nextInt();
+				
+				Person personObjekt = new Person(ID, fornavn, etternavn, fodeaar);
+		}
+		
+		
+		
+		
+		
+		Hendelse hendelseObjekt= new Hendelse();
+hendelseObjekt.
+	}
+
+	
+}

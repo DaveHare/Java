@@ -1,0 +1,54 @@
+package oppgave1;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
+public class oppgave2 {
+
+	public static Stack<Integer> A;
+	public static Stack<Integer> B;
+	public static Stack<Integer> C;
+	public static Integer en;
+	public static Integer to;
+	public static Integer tre; 
+
+	public static void main(String[] args){
+		A=new Stack<Integer>();
+		B=new Stack<Integer>();
+		C=new Stack<Integer>();
+
+		en= 1;
+		to= 2;
+		tre= 3;
+
+		A.push(tre);
+		A.push(to);
+		A.push(en);
+
+	}
+
+	public void HannoisTaarn1(Stack<Integer> A){
+
+
+		if(B.isEmpty()){
+			B.push(A.pop());
+		}else if(B.peek()<A.peek()&& (C.isEmpty()|| A.peek()<B.peek())){
+			C.push(A.pop());
+		}
+
+
+	}
+	public void HannoisTaarn(){
+
+
+
+	}
+
+
+}
+
+
+
+
+}

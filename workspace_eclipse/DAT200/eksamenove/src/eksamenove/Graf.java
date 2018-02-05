@@ -1,0 +1,28 @@
+package grafrepresentasjoner;
+
+import java.util.List;
+
+/*
+ * Grensesnitt for en graf. Inneholder også noen
+ * standardverdier for grafer. Verdien "-1" er brukt
+ * siden grafimplementasjonene foreløpig antar at
+ * vekter ikke kan være negative. For grafer med negative
+ * vekter så må man velge et annet tall, for eksempel
+ * Integer.MAX_VALUE eller Double.POSITIVE_INFINITY
+ */
+public interface Graf <T> {
+	public static final int INGEN_KANT = -1;
+	public static final int INGEN_SCORE = -1;
+	
+	public int addNode(T node);
+	public void addEdge(int fra, int til, int vekt);
+	public int getWeight(int fra, int til);
+	public List<Integer> getNeighbours(int nodeindeks);
+	public T getNodeObject(int nodeindeks);
+	public int getScore(int nodeindeks);
+	public int setScore(int nodeindeks, int nyScore);
+	public void resetScores();
+	public boolean isHandled(int nodeindeks);
+	public void setHandled(int nodeindeks, boolean handled);
+	public int noNodes();
+}

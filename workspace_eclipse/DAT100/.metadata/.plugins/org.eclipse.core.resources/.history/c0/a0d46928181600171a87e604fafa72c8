@@ -1,0 +1,24 @@
+package application;
+
+import javafx.event.EventHandler;
+import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+
+public class nyHendelseLytter implements EventHandler<MouseEvent> {
+public ListView<Hendelse> listView;
+
+	public nyHendelseLytter(ListView<Hendelse> listView) {
+		
+		
+		
+	}
+
+	@Override
+	public void handle(MouseEvent arg0) {
+		GridPane root= new GridPane();
+		 Textfield beskrivelse= new TextField();
+		
+	}
+
+}

@@ -1,0 +1,116 @@
+
+
+/*
+ * Eksempel på algoritmer og kjøretidsanalyse:
+ * Maksimal Delsekvenssum.
+ * 
+ * Gitt en array av heltall n, finn den høyeste
+ * summen av en delsekvens av arrayen. En delsekvens
+ * er alle elementene fra og med en indeks i til og med
+ * en høyere indeks j.
+ */
+public class MaksimalDelsekvensSum {
+	
+	/*
+	 * Brute Force: Enkel men dårlig algoritme
+	 * 
+	 * Vekstfunksjon: n*(n+1)*(n+2)/6. Å finne denne 
+	 * formelen krever ei grein i matematikken som heter 
+	 * Kombinatorikk, og som er pensum i 
+	 * MAT120 Diskret Matematikk
+	 * 
+	 * Kjøretid O(n^3)
+	 * Årsak:
+	 * - Ytre for-loop kjører n ganger
+	 * - Midtre for-loop kjører proposjonalt med n ganger
+	 * - Indre for-loop kjører proposjonalt med n ganger
+	 * 
+	 */
+	public static int bruteForce(int[] tallene) {
+		int maksimalSum = Integer.MIN_VALUE;
+		for (int i=0;i<tallene.length;i++) {
+			for (int j=i;j<tallene.length;j++) {
+				int sum = 0;
+				for (int k=i;k<j;k++) {
+					sum += tallene[k];
+				}
+				if (maksimalSum < sum) maksimalSum = sum;
+			}
+		}
+		return maksimalSum;
+	}
+	
+	/*
+	 * Første forbedring: Bruker observasjonen at S(i-j) = S(i-(j-1)) + Ej til å fjerne
+	 * den innerste for-løkka.
+	 * 
+	 * Kjøretid: O(n^2)
+	 */
+	public static int delsekvensSumKvadratisk(int[] tallene) {
+		int maksimalSum = Integer.MIN_VALUE;
+		for (int i=0;i<tallene.length;i++) {
+			int sum = 0;
+			for (int j=i;j<tallene.length;j++) {
+				sum += tallene[j];
+				if (maksimalSum < sum) maksimalSum = sum;
+			}
+		}
+		return maksimalSum;
+	}
+
+	/*
+	 * Andre forbedring: Hvis S(i-j) er negativ så vil ikke en sum S(i-p) hvor
+	 * p > j være størst siden S((j+1)-p) vil være større. Kan derfor bruke break
+	 * i den indre for-loopen hvis summen blir negativ.
+	 * 
+	 * Denne har fortsatt O(n^2) kjøretid, men kjører i praksis mye fortere enn
+	 * den forrige.
+	 */
+	public static int delsekvensSumForbedret(int[] tallene) {
+		int maksimalSum = Integer.MIN_VALUE;
+		for (int i=0;i<tallene.length;i++) {
+			int sum = 0;
+			for (int j=i;j<tallene.length;j++) {
+				sum += tallene[j];
+				if (sum < 0) break;
+				if (maksimalSum < sum) maksimalSum = sum;
+			}
+		}
+		return maksimalSum;
+	}
+
+	/*
+	 * Beste algoritme. Med noen flere observasjoner (se læreboka kapittel 5 eller
+	 * forelesningsnotatene) så kan enda en for-loop elimineres. Prinsippet er at
+	 * hvis summen til nå er negativ så kan man starte på nytt.
+	 * 
+	 * Kjøretid O(n)
+	 */
+	public static int delsekvensSumLineaer(int[] tallene) {
+		int sum = 0;
+		int maksimalSum = Integer.MIN_VALUE;
+		for (int i=0;i<tallene.length;i++) {
+			sum += tallene[i];
+			if (maksimalSum < sum) maksimalSum = sum;			
+			if (sum < 0) sum = 0;
+		}
+		return maksimalSum;
+	}
+	
+//	public static final int ANTALL = 4000;	  Her bruker brute force merkbar tid
+//	public static final int ANTALL = 40000;   Her bruker den kvadratiske merkbar tid
+	public static final int ANTALL = 2000000; // Her bruker den forbedrete kvadratiske merkbar tid
+	
+	public static void main(String[] args) {
+		int[] tallene = new int[ANTALL];
+		
+		for (int a=0;a<ANTALL;a++) {
+			tallene[a] = (int)(Math.random()*200) - 100;
+		}
+//		System.out.println(bruteForce(tallene));
+//		System.out.println(delsekvensSumKvadratisk(tallene));
+//		System.out.println(delsekvensSumForbedret(tallene));
+		System.out.println(delsekvensSumLineaer(tallene));
+	}
+
+}

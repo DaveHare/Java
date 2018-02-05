@@ -1,0 +1,49 @@
+package grafalgoritmer;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+import grafrepresentasjoner.Graf;
+
+/*
+ * Korteste vei uten vekter / bredde først søk
+ * Unweighted Shortest Paths / Breadth First Search
+ */
+public class BreddeForstSok <T> {
+	private Queue<Integer> noder;	// Kø av noder som skal behandles
+	private Graf<T> grafen;			// Grafen som skal behandles
+	
+	/*
+	 * Konstruktør som setter opp variablene.
+	 * 
+	 * Kjøretid O(V) på grunn av resetScores
+	 */
+	public BreddeForstSok(Graf<T> grafen, int startnodeindeks) {
+		this.grafen = grafen;
+		noder = new LinkedList<>();
+		noder.add(startnodeindeks);
+		grafen.resetScores();
+		grafen.setScore(startnodeindeks, 0);
+	}
+	
+	/*
+	 * Metode som kjører selve algoritmen
+	 * 
+	 * Kjøretid nabolister O(V + E)
+	 * Kjøretid nabomatrise O(V^2)
+	 */
+	public void breddeForstSok() {
+		while (noder.size() > 0) {
+			int nodeindeks = noder.remove();
+			List<Integer> naboer = grafen.getNeighbours(nodeindeks);
+			int minScore = grafen.getScore(nodeindeks);
+			for (int i: naboer) {
+				if (grafen.getScore(i) == Graf.INGEN_SCORE) {
+					grafen.setScore(i, minScore + 1);
+					noder.add(i);
+				}
+			}
+		}
+	}
+}

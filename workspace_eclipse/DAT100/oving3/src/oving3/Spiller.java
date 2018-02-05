@@ -1,0 +1,81 @@
+package oving3;
+
+import java.util.Scanner;
+
+/**
+ * @author sirim
+ *
+ */
+public class Spiller {
+
+	/* 
+	 * Skriv en klasse for en spiller til et tenkt flerspillerspill. 
+	 * En spiller har en ID, et navn og en poengsum. 
+	 * Finn fornuftige datatyper for disse tre egenskapene
+	 */
+
+	// instansvariabler
+			private int ID;
+			private String navn;
+			private int poengsum;
+			
+			
+			private static int nesteID=1;
+			
+	public Spiller(String navn){ 
+		ID=nesteID;
+		nesteID++;
+		this.navn=navn;
+		poengsum=0;
+		
+		
+		
+	}	
+
+	public int getSpillerID() {
+		return ID;
+	}
+	public String getNavn() {
+
+		return navn;
+	}
+
+	public void setNavn(String navn) {
+		if (navn== ""){
+			throw new IllegalArgumentException("Navn kan ikke være tomt");
+		}
+		else{
+			this.navn = navn;
+		}
+	}
+
+	public int getPoengsum() {
+		return poengsum;
+	}
+
+	public void setPoengsum(int poengsum) {
+		if (poengsum<0){
+			throw new IllegalArgumentException("Poeng kan ikke være negativt");
+		}
+		else{
+			this.poengsum = poengsum;
+		}
+	}
+
+	public void SkrivUtSpiller(){
+		System.out.println("ID: "+ ID);
+		System.out.println("Navn: " + navn);
+		System.out.println("Poeng: " + poengsum);
+		
+	}
+	
+
+	public static Spiller HoyestScore(Spiller spiller1, Spiller spiller2){
+		return(spiller1.getPoengsum() > spiller2.getPoengsum())? spiller1 : spiller2;
+						
+	}
+
+
+	
+
+}

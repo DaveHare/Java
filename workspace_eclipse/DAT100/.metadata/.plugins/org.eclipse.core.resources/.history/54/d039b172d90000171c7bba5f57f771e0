@@ -1,0 +1,10 @@
+
+public interface Rute {
+
+
+	
+	public default void flyttHit(Spiller spilleren){
+		spilleren.getPoengsum();
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;oppgave2.soketrær&apos; to &apos;Soketrær&apos;&#x0D;&#x0A;- Original project: &apos;oving7 Hashtabell&apos;&#x0D;&#x0A;- Original element: &apos;oppgave2.soketrær&apos;&#x0D;&#x0A;- Renamed element: &apos;oppgave2.Soketrær&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;soketrær&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;oppgave2{soketrær.java[soketrær" matchStrategy="1" name="Soketrær" qualified="false" references="true" similarDeclarations="false" stamp="1508156541754" textual="false" version="1.0"/>
+</session>

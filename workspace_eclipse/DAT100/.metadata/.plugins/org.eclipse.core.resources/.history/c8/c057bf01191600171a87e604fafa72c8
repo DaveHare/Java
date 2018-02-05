@@ -1,0 +1,43 @@
+package application;
+
+import java.time.LocalDate;
+
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+public class nyHendelseLytter implements EventHandler<MouseEvent> {
+public ListView<Hendelse> listView;
+
+	public nyHendelseLytter(ListView<Hendelse> listView) {
+		
+		
+		
+	}
+
+	@Override
+	public void handle(MouseEvent arg0) {
+		GridPane root= new GridPane();
+		 TextField beskrivelse= new TextField();
+		 TextField startdato= new TextField();		 
+		 TextField sluttdato= new TextField();
+		Button leggTil= new Button("Legg til"); 
+		 root.add(beskrivelse,0,0);
+		 root.add(startdato, 0, 1);
+		 root.add(sluttdato, 0, 2);
+		 root.add(leggTil, 0, 3);
+		 
+		 Stage stage = new Stage();
+		 stage.setTitle("Gjesteliste");
+			stage.setScene(new Scene(root));
+			stage.show();
+		 
+		
+	}
+
+}

@@ -1,0 +1,121 @@
+package kapteinOks;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+import grafalgoritmer.Dijkstra;
+
+import grafalgoritmer.NoderNaboliste;
+import grafrepresentasjoner.Graf;
+
+public class TestKaptainOks {
+	public static int x, y, startX, startY, sluttX, sluttY;
+	public static int[][] kart;
+	public static Graf<Integer> liste= new NoderNaboliste<Integer>();
+	public static void main(String[] args) {
+		lesKartFraFil();
+		konverterTilNode();
+//		System.out.println(startX+startY*x+"  "+ sluttX + sluttY*x);
+		Dijkstra<Integer> dij = new Dijkstra<Integer>(liste, startX+ startY*x, sluttX + sluttY*x);
+		dij.dijkstra();
+List<Integer> kortest= dij.getShortestPath();
+List<String> svar= new ArrayList<String>();
+int[][] rute= new int[y][x];
+
+for(Integer i: kortest){
+	svar.add(i%x+","+(int)Math.floor(i/x));
+	rute[i/x][i%x]= 1;
+	
+	System.out.println(i);
+}
+System.out.println(svar);
+for(int a =0; a<y; a++){
+	System.out.println(Arrays.toString(rute[a]));
+}
+
+	}
+	
+	
+
+
+	private static void konverterTilNode() {
+			for(int teller1 = 0; teller1 < y; teller1++){
+				for(int teller2 = 0; teller2 < x; teller2++){
+					Integer navn = teller2 + teller1*12;
+					liste.addNode(navn);
+				}
+			}
+			// legger in hvilken kordinater som er koblet til hvilken kordinater
+			for(int ii = 0; ii < y; ii++){
+				for(int jj = 0; jj < x; jj++){
+					// hver if legger til kanten hvis den eksisterer.
+					if(ii != y-1){
+						// legger til hvor langt det er mellom to kordinater
+						int vekt = Math.abs(kart[jj][ii] - kart[jj][ii + 1]) + 1;
+						// legger til kanten
+						liste.addEdge(ii * x + jj,(ii+1) * x + jj,vekt);
+					}
+					if( ii != 0){
+						int vekt = Math.abs(kart[jj][ii] - kart[jj][ii - 1]) + 1;
+						liste.addEdge(ii * x + jj,(ii - 1) * x + jj,vekt);
+					}
+					if (jj != x-1){
+						int vekt = Math.abs(kart[jj][ii] - kart[jj + 1][ii]) + 1;
+						liste.addEdge(ii * x + jj,ii * x + jj + 1,vekt);
+					}
+					if (jj != 0){
+						int vekt = Math.abs(kart[jj][ii] - kart[jj - 1][ii]) + 1;
+						liste.addEdge(ii * x + jj,ii * x + jj - 1,vekt);
+					}	
+				}
+			}
+			System.out.println(liste.toString());
+		}
+
+
+		public static void lesKartFraFil() {
+			try {
+				Scanner filleser = new Scanner(new File("kart.txt"));
+				String linje;
+				KaptainOksKart leser = new KaptainOksKart();
+				x = filleser.nextInt();
+				y = filleser.nextInt();
+				kart= new int[x][y];
+				startX= filleser.nextInt();
+				startY= filleser.nextInt();
+				//			liste.add(new NoderNaboliste());
+				sluttX= filleser.nextInt();
+				sluttY= filleser.nextInt();
+				System.out.println("_"+ sluttY);
+				//			liste.add(new NoderNaboliste());
+				filleser.nextLine();
+
+				for(int jj=0; jj<y; jj++){
+
+					linje = filleser.nextLine();
+
+					//				System.out.println(jj);// + linje);
+					String[] komp = linje.split(",");
+
+					for(int ii=0; ii<x; ii++){
+						System.out.print(" "+komp[ii]);
+						kart[ii][jj]= Integer.parseInt(komp[ii]);	
+					}
+					System.out.print("\n");
+
+				}
+
+
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+
+			}
+
+		}
+
+
+	}

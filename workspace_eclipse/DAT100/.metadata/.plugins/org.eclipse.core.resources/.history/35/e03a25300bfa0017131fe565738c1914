@@ -1,0 +1,22 @@
+package skuddaar;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class SkuddaarTest {
+
+	/*
+	 * Eksempel på JUnit test. Det er viktig å teste alle veier gjennom metoden
+	 */
+	@Test
+	public void testErSKuddaar() {
+		assertTrue(Skuddaar.erSKuddaar(2000));		// Delelig med 400
+		assertFalse(Skuddaar.erSKuddaar(2001));		// Ikke delelig med noen av tallene
+		assertTrue(Skuddaar.erSKuddaar(2004));		// Delelig med 4, men ikke med 100 eller 400
+		assertFalse(Skuddaar.erSKuddaar(1900));		// Delelig med 4 og 100 men ikke 400
+		assertTrue(Skuddaar.erSKuddaar(1996));		// Delelig med 4, men ikke med 100 eller 400
+		assertFalse(Skuddaar.erSKuddaar(1998));		// Partall som ikke er delelig på noen av tallene
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type variable &apos;T&apos; of &apos;oppgave1.ArrayDeque&apos; to &apos;Integer&apos;&#x0D;&#x0A;- Original project: &apos;oving3&apos;&#x0D;&#x0A;- Original element: &apos;T&apos;&#x0D;&#x0A;- Renamed element: &apos;Integer&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename type variable &apos;T&apos;" id="org.eclipse.jdt.ui.rename.type.parameter" input="/src&lt;oppgave1{ArrayDeque.java[ArrayDeque" name="Integer" parameter="T" references="true" stamp="1504796436618" version="1.0"/>
+</session>

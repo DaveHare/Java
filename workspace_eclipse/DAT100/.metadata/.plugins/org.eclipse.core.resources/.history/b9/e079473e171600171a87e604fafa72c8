@@ -1,0 +1,11 @@
+package application;
+
+import javafx.event.EventHandler;
+
+public class nyHendelseLytter implements EventHandler<MouseEvent> {
+
+	public nyHendelseLytter() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

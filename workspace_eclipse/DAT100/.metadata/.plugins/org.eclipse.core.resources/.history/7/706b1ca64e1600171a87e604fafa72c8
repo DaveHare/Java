@@ -1,0 +1,54 @@
+package application;
+
+
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+public class nyHendelseLytter implements EventHandler<MouseEvent> {
+	public ListView<Hendelse> listView;
+
+	public nyHendelseLytter(ListView<Hendelse> listView) {
+	this.listView=listView;
+	}
+
+	@Override
+	public void handle(MouseEvent arg0) {
+		
+		GridPane root= new GridPane();
+		Label beskrivelse= new Label ("Beskrivelse:");
+		Label startdato= new Label ("Startdato:");		 
+		Label sluttdato= new Label ("Sluttdato");
+		TextField beskrivelse1= new TextField();
+		TextField startdato1= new TextField();		 
+		TextField sluttdato1= new TextField();
+		Button leggTil= new Button("Legg til"); 
+
+		root.add(beskrivelse,0,0);
+		root.add(startdato, 0, 1);
+		root.add(sluttdato, 0, 2);
+		root.add(beskrivelse1,1,0);
+		root.add(startdato1, 1, 1);
+		root.add(sluttdato1, 1, 2);
+		root.add(leggTil, 1, 3);
+
+		Stage stage = new Stage();
+		stage.setTitle("Ny Hendelse");
+		stage.setScene(new Scene(root));
+		stage.show();
+		System.out.println(beskrivelse1.getText());
+		LeggTilHendelse leggtilLytter= new LeggTilHendelse(beskrivelse1.getText(), startdato1.getText(),sluttdato1.getText());
+		leggTil.setOnMouseClicked(leggtilLytter);
+		System.out.println(beskrivelse1.getText()+ startdato1.getText()+ sluttdato1.getText());
+		
+		
+
+	}
+
+}

@@ -1,0 +1,79 @@
+package oppgave1;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
+public abstract class ArrayDequen <T> implements List<T> {
+
+	public int startstørrelse;
+	public int startbuffer;
+	public int index;
+	public Object data;
+	public Object[] listen;
+	public int start;
+	public int slutt;
+	public int antallElementer;
+	
+	
+	public ArrayDequen(int startstørrelse, int startbuffer){
+		this.startstørrelse=startstørrelse;
+		this.startbuffer= startbuffer;
+		
+		antallElementer= 0;
+		
+		listen= new Object[startstørrelse];	
+	}
+	
+	public void add(int index, T data){
+		index+=startbuffer;
+		listen[index]=data;
+		startbuffer--;
+		antallElementer++;
+		okKapasitet();
+		
+	}
+
+	private void okKapasitet() {
+		if(startbuffer==0)okKapasitet();
+	}
+	
+	public void okKapasitet(int utvidbuffer){
+		Object[] nyliste = new Object[listen.length + utvidbuffer];
+		int i=0;
+		
+		for(Object dataen: listen){
+			i++;
+			nyliste[utvidbuffer + i]=listen[i];
+		}
+		
+		
+		
+	}
+
+	public Object get(int index){
+		
+		return listen.get(index);		
+	}
+	
+	public void remove(int index){
+		
+	}
+	
+	public void addFirst(){
+		
+	}
+	
+	public void addLast(){
+		
+	}
+
+	
+
+	
+
+
+	
+}

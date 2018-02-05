@@ -1,0 +1,16 @@
+
+public class VanligRute extends 
+AbstraktRute implements Rute{
+
+	public VanligRute(int posisjon) {
+		super(posisjon);
+	}
+	public static void flyttHit(Spiller spilleren){
+
+		System.out.println("Du har truffet en vanlig rute! "
+				+ "Nåværende rute: " +spilleren.getPoengsum()+".");
+	}
+
+
+
+}

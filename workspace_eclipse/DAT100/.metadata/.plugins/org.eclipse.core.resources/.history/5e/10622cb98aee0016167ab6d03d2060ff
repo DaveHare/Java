@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class personHendelseTest {
+
+	public personHendelseTest() {
+		
+	}
+
+	public static void main(String[] args) {
+		/*
+		 * Lag en main metode som demonstrerer bruken av
+		 * hendelser og personer. Lag minst to hendelser
+		 * og minst tre personer som deltar på minst én 
+		 * hendelse hver, og skriv ut informasjon om dem.
+		 */
+		
+		
+		
+		
+		Person personObjekt = new Person();
+		
+		personObjekt.lagPerson();	
+		
+		
+		
+		Hendelse hendelseObjekt= new Hendelse();
+hendelseObjekt.
+	}
+
+	
+}

@@ -1,0 +1,29 @@
+package application;
+
+import java.time.LocalDate;
+
+import javafx.event.EventHandler;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+
+public class nyHendelseLytter implements EventHandler<MouseEvent> {
+public ListView<Hendelse> listView;
+
+	public nyHendelseLytter(ListView<Hendelse> listView) {
+		
+		
+		
+	}
+
+	@Override
+	public void handle(MouseEvent arg0) {
+		GridPane root= new GridPane();
+		 TextField beskrivelse= new TextField();
+		 TextField startdato= new TextField();		 
+		 TextField sluttdato= new TextField();
+		
+	}
+
+}

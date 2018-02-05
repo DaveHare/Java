@@ -1,0 +1,22 @@
+package oppgave2;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import lesere.StudentLeser;
+import personer.Student;
+
+public class Soketrær {
+
+	
+	public static void main(String[] args) {
+		List<Student> studentliste= StudentLeser.lesStudenterFraFil(); 
+		HashMap<String,Student> studentMap= new HashMap<>();
+		
+	}
+	
+	
+	
+	
+}

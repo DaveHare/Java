@@ -1,0 +1,99 @@
+package oppgave1;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
+public abstract class ArrayDequen <Object> implements List<Object> {
+
+	public int startstørrelse;
+	public int startbuffer;
+	
+	public Object data;
+	public Object[] listen;
+//	public int start;
+//	public int slutt;
+	public int antallElementer;
+	
+	
+	public ArrayDequen(int startstørrelse, int startbuffer){
+		this.startstørrelse=startstørrelse;
+		this.startbuffer= startbuffer;
+		
+		antallElementer= 0;
+		
+		listen= new Object[startstørrelse];	
+	}
+	
+	public void add(int index, Object data){
+		index+=startbuffer;
+		listen[index]=data;
+		startbuffer--;
+		antallElementer++;
+		okKapasitet();
+		
+	}
+
+	public void okKapasitetForan() {
+		if(startbuffer==0)okKapasitet();
+	}
+	
+	public void okKapasitetForan(int utvidbuffer){
+		Object[] nyliste = new Object[listen.length + utvidbuffer];
+		int i=0;
+		
+		for(Object dataen: listen){
+			i++;
+			nyliste[utvidbuffer + i]=dataen;
+		}		
+	}
+	
+	public void okKapasitetBak() {
+		if(startbuffer==0)okKapasitet();
+	}
+	
+	public void okKapasitetBak(int utvidbuffer){
+		Object[] nyliste = new Object[listen.length + utvidbuffer];
+		int i=0;
+		
+		for(Object dataen: listen){
+			i++;
+			nyliste[utvidbuffer + i]=dataen;
+		}		
+	}
+
+	public Object get(int index){
+		return listen[index+startbuffer];	 		
+	}
+	
+	public Object remove(int index){
+		
+		if(!(listen[index + startbuffer]==null)){
+			listen[index+ startbuffer]=null;
+			return listen[index+ startbuffer];
+			
+		}else{
+			throw new NullPointerException("Plassen i arrayen er tom");
+		}
+		
+	}
+	
+	public void addFirst(){
+		
+		
+		
+	}
+	
+	public void addLast(){
+		
+	}
+
+	
+
+	
+
+
+	
+}

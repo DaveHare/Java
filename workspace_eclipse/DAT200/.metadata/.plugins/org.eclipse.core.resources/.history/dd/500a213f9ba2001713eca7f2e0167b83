@@ -1,0 +1,70 @@
+package oppgave2;
+
+import java.util.Stack;
+
+public class oppgave2 {
+
+	public static Stack<Integer>[] taarn;
+	public static void setUpTaarn(int n) {
+
+		// setter opp fire stacks men [0] blir ikke brukt.
+		taarn = new Stack[4];
+		for (int i = 1; i <= 3; i++){
+			taarn[i] = new Stack<Integer>();
+		}
+		for (int d = 3; d > 0; d--){
+			// pusher tall inn i første stacken
+			taarn[1].push(new Integer(d)); 
+		}
+		//		setter spillet i gang
+		hanoiSpill(n, 1, 2, 3);
+	}
+
+	
+	/* T(1)=1
+	 * T(n)=2T(n-1)+1
+	 * T(n-1)=2T(n-2)+1
+	 * T(n-2)=2T(n-3)+1
+	 * T(n-3)=2T(n-4)+1
+	 * 
+	 * T(n)=2T(2T(2T(2T....(n-k)+1)+1)+1)+1
+	 * 
+	 * 2^k(T(n-k)+(k))+k
+	 * k=n-1
+	 * 2^(n-1)(T(1)+(n-1))+n-1
+	 * 2^(n-1)(1+n-1)+n-1
+	 * 2(^n-1)(n) +n-1
+	 * (2n^(n-1)-2^(n-1))+n-1
+	 * 
+	 * T(n)=2^kT(n-k)+k
+	 * k=n-1
+	 * T(n)=2^k(T(1)+n-1)
+	 * T(n)=2^(n-1)(n)
+	 * 
+	 * 
+	 * O(2^n)
+	 */
+	public static void hanoiSpill(int n, int A, int B, int C) {
+
+		if (n > 0) {
+			try{
+				hanioSpill(n - 1, A, C, B);
+//				 flytte en disk fra toppen av A til tårn B
+				Integer d = (Integer)taarn[A].pop();
+				taarn[B].push(d); 
+				System.out.println("Flytter disk " +d 
+						+ " fra tårn "+ A + " til toppen av tårn " + B);
+				hanoiSpill(n - 1, C, B, A);
+			}catch(Exception e){
+				System.out.println("Feil ved flytting.");
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		System.out.println("Flytte disk:");
+		setUpTaarn(3);
+	}
+}
+

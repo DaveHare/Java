@@ -1,0 +1,24 @@
+package person;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class PersonTest {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+		
+		assertEquals(true,new Person("siri","mykland",1996));
+		assertEquals(true,new Person("marthe","moi",1995));
+		assertEquals(true,new Person("ingrid","aanesland",1985));
+		assertEquals(true,new Person("sondrre","mykland",1996));
+		assertEquals(true,new Person("silje","rugsveen",1994));
+	}
+	void setUp() throws Exception{
+		testPerson1= new Person("Siri", "Mykland", 1992);
+		testPerson1= new Person("Frida", "Erdal", 1994);
+	}
+
+}

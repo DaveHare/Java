@@ -1,0 +1,39 @@
+package oving3;
+
+import java.util.Scanner;
+
+public class SpillerTest {
+	Scanner input= new Scanner(System.in);
+	
+	public spiller lesInnSpiller(Scanner inn){
+
+		
+		System.out.println("ID: ");
+		int ID=input.nextInt();
+
+
+		System.out.println("Navn: ");
+		input.nextLine();
+		String navn=input.nextLine();
+		spiller spillerObjekt= new spiller(navn);
+		return spillerObjekt;
+
+	}
+
+	public static void main(String[] args) {
+		System.out.println("Registrer spiller 1: ");
+		spiller SpillerObjekt1=SpillerObjekt1.lesInnSpiller();
+		//SpillerObjekt1.spiller();
+		
+		System.out.println("Registrer spiller 2: ");
+		spiller SpillerObjekt2 = SpillerObjekt2.lesInnSpiller(); //nytt objekt for spiller 2
+		//SpillerObjekt2.Spiller();
+		
+		
+		spiller vinner= spiller.HoyestScore(SpillerObjekt1, SpillerObjekt2);
+		System.out.println("spilleren med høyest score er: ");
+		vinner.SkrivUtSpiller();
+		
+	}
+
+}

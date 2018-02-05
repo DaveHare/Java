@@ -1,0 +1,12 @@
+package oving5;
+
+public class Spillet {
+
+	
+	public ArrayList spillere;
+	
+	public Spillet() {
+		
+	}
+
+}

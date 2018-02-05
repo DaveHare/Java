@@ -1,0 +1,27 @@
+package oppgave1;
+
+public class rekursjonVSiterasjon {
+/*
+ * Lag en rekursiv metode som finner det n-te elementet 
+ * A(n) i formelen A(n) = A(n-1) + 1/n, A(1)=1. 
+ * Metoden skal ta tallet n som parameter.
+ */
+	public double sum;
+	
+	public double nteLedd(double n){
+		if (n==1){
+			return sum;
+		}else{	
+		sum+=nteLedd(n-1)+ 1/n;
+		}
+		return sum;
+	}
+	
+	public static void main(String[] args){
+		
+		System.out.print(nteLedd(100));
+		
+	}
+	
+	
+}

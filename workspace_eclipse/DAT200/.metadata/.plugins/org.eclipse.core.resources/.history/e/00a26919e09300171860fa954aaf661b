@@ -1,0 +1,58 @@
+package oppgave1;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+
+public class ArrayDequen<Integer> implements Collection<Integer> {
+
+	public int startstørrelse;
+	public int startbuffer;
+	public int index;
+	public Integer data;
+	public Integer[] listen;
+	public int start;
+	public int slutt;
+	
+	
+	public ArrayDequen(int startstørrelse, int startbuffer){
+		this.startstørrelse=startstørrelse;
+		this.startbuffer= startbuffer;
+		start=0;
+		slutt=0;
+			
+//		this.index= index;
+//		this.data=data;
+		listen= new Integer[];	
+	}
+	
+	public boolean add(Integer data){
+		return listen.add(data);
+		
+		
+	}
+
+	public Integer get(int index){
+		
+		return listen.get(index);		
+	}
+	
+	public void remove(int index){
+		
+	}
+	
+	public void addFirst(){
+		
+	}
+	
+	public void addLast(){
+		
+	}
+
+
+
+
+
+
+	
+}
