@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import stud5.Person;
+
 class PersonTest {
 	Person testPerson1,testPerson2;
 	@Test

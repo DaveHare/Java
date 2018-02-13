@@ -1,8 +1,8 @@
 package hendelse;
 
-import java.time.LocalDate;
 
-import person.Person;
+
+import stud5.Person;
 
 public class Main {
 

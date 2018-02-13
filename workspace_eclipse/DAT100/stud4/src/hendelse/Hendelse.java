@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.xml.stream.events.StartDocument;
 
-import person.Person;
+import stud5.Person;
 
 /*
  * Utdelt kode for øving 4

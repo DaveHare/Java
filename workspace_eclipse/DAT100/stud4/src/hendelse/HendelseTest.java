@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import person.Person;
+import stud5.Person;
 
 class HendelseTest {
 	Hendelse h1;

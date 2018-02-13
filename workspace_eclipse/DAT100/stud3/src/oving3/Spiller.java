@@ -5,10 +5,17 @@ public class Spiller {
 	public String navn;
 	public int ID;
 	public int poengsum;
-
+	private static int nesteID = 0;
+	
 	public Spiller(String navn, int ID) {
 		this.navn=navn;
 		this.ID=ID;
+		poengsum=0;
+	}
+	public Spiller(String navn) {
+		this.navn=navn;
+		this.ID=nesteID;
+		nesteID++;
 		poengsum=0;
 	}
 
