@@ -17,9 +17,9 @@
 		<item value="false" key="GenerateJavadoc"/>
 	</section>
 	<section name="DialogBounds_SuperInterfaceSelectionDialog">
-		<item value="478" key="DIALOG_WIDTH"/>
-		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
-		<item value="681" key="DIALOG_HEIGHT"/>
+		<item value="591" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="814" key="DIALOG_HEIGHT"/>
 		<item value="142" key="DIALOG_X_ORIGIN"/>
 		<item value="0" key="DIALOG_Y_ORIGIN"/>
 	</section>
@@ -34,9 +34,9 @@
 		<item value="true" key="ShowStatusLine"/>
 		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History/&gt;" key="History"/>
 		<section name="DialogBoundsSettings">
-			<item value="359" key="DIALOG_WIDTH"/>
-			<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
-			<item value="650" key="DIALOG_HEIGHT"/>
+			<item value="439" key="DIALOG_WIDTH"/>
+			<item value="1|Segoe UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+			<item value="778" key="DIALOG_HEIGHT"/>
 			<item value="674" key="DIALOG_X_ORIGIN"/>
 			<item value="61" key="DIALOG_Y_ORIGIN"/>
 		</section>
@@ -69,9 +69,9 @@
 		</section>
 	</section>
 	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
-		<item value="678" key="DIALOG_WIDTH"/>
-		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
-		<item value="768" key="DIALOG_HEIGHT"/>
+		<item value="846" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="1080" key="DIALOG_HEIGHT"/>
 		<item value="13" key="DIALOG_X_ORIGIN"/>
 		<item value="0" key="DIALOG_Y_ORIGIN"/>
 	</section>

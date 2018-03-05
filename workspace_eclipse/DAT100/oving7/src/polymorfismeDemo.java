@@ -21,6 +21,7 @@ public class polymorfismeDemo {
 		while(run){
 			run=enRunde(spillerListe, spillbrett);
 		}
+		inn.close();
 
 	}
 
@@ -53,7 +54,10 @@ public class polymorfismeDemo {
 			Spiller spiller= new Spiller(navn,0);
 			spillerListe.add(spiller);
 		}
+		
+		inn.close();
 		return spillerListe;
+		
 
 	}
 
